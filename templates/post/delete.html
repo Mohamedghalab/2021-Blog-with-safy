@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+    {{ block.super }} Delete Post
+{% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-8">
+            <!-- posts -->
+     
+                <div class="card mb-3">
+                    <div class="card-header bg-dark">
+                        <div class="row">
+                            <div class="col-6">
+                                <!-- user -->
+                                <p class="text-muted">{{post.created_by}}</p>
+                            </div>
+                            <div class="col-6">
+                                <!-- created at -->
+                                <p class="text-muted text-end">{{post.created_at|timesince}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <h3>Are you sure ?</h3>
+                            <button class="btn btn-danger btn-sm">delete</button>
+                            <a href="{% url 'detail' post.id %}" class="btn btn-primary btn-sm">back</a>
+                        </form>
+                    </div>
+                </div>
+          
+        </div>
+        <div class="col"></div>
+       
+    </div>
+    
+{% endblock content %}
+
+

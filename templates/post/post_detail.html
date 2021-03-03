@@ -1,0 +1,92 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+    {{ block.super }} Post Detail
+{% endblock title %}
+
+{% block content %}
+            <!-- posts -->
+     
+                <div class="card mb-3">
+                    <div class="card-header bg-dark">
+                        <div class="row">
+                            <div class="col-6">
+                                <!-- user -->
+                                <p class="text-muted">{{post.created_by}}</p>
+                            </div>
+                            <div class="col-6">
+                                <!-- created at -->
+                                <p class="text-muted text-end">{{post.created_at|timesince}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-3">
+                                <!-- image -->
+                                <img class="w-50"  src="{% static 'img/male.jpg' %}" >
+                            </div>
+                            <div class="col-8">
+                                <div class="row">
+                                    <div class="col">
+                                        <!-- title -->
+                                        <strong >{{post.title}}</strong>
+                                    </div>
+                                    <div class="col">
+                                        <!-- category -->
+                                        <strong>{{post.category}}</strong>
+                                    </div>
+                                </div>
+                                <!-- content -->
+                                <p>{{post.content}}</p>
+                                <div class="text-end">
+                                    {% if user == post.created_by %}
+                                    <a href="{% url 'edit' post.id %}" class="btn btn-primary btn-sm ">Edit</a>
+                                    <a href="{% url 'delete' post.id %}" class="btn btn-danger btn-sm ">Delete</a>
+                                    {% endif %}
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+    <!--show comments  -->
+    Comments({{comment.count}})
+    {% for comment in comment %}
+        <div class="card my-2 bg-secondary">
+            <div class="row mx-5">
+                <div class="col-6">
+                    <!-- user -->
+                    <div class="text-light">
+                        Author : {{comment.created_by}}
+                    </div>
+
+                </div>
+                <div class="col-6">
+                    <!-- created_at -->
+                    <div class="text-light">
+                        Since : {{comment.created_at|timesince}}
+                    </div>
+                </div>
+            </div>
+            <div class="row mx-5">
+                <div class="col mb-2">
+                    <!-- comment -->
+                    {{comment.comment}}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+        <!-- add a comment -->
+        <form method="POST">
+            {% csrf_token %}
+            <label for="comment">Add a comment</label>
+            <textarea name="comment" id="comment" rows="5" required class="form-control"></textarea>
+            <input type="submit" value="Comment" class="btn btn-primary my-3">
+        </form>
+    
+    
+{% endblock content %}
+
+

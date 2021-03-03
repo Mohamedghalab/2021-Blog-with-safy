@@ -1,0 +1,31 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'home' %}">ghalab blog</a>
+    
+    <div>
+        <div>
+          {% if user.is_authenticated %}
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              {% if user.first_name %}
+                <span class="text-light">{{user.get_full_name}}</span>
+              {% else %}
+                <span class="text-light">{{user.username}}</span>
+              {% endif %}
+            </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="{% url 'password_change' %}">Change_password</a></li>
+                <li><a href="{% url 'logout' %}" class="dropdown-item bg-danger">Logout</a></li>
+              </ul>
+          </div>
+          
+          {% else %}
+          <a href="{% url 'login' %}" class="nav-item btn btn-success text-end">Login</a>
+          <a href="{% url 'signup' %}" class="nav-item btn btn-warning text-end">signup</a>
+          {% endif %}
+        </div>
+      
+    
+
+  </div>
+</nav>

@@ -1,0 +1,31 @@
+{% extends 'base/auth_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {{ block.super }} Login
+{% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6">
+            <div class="card signup">
+                <h2 class="mx-2"><strong>Sign In</strong></h2>
+                <div class="card-body signup">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <input type="submit" class='btn btn-primary my-2' value="Signin">
+                        <a href="{% url 'password_reset' %}" class="mx-3">Reset password</a>
+                        <p class="text-muted bg-light text-center">Don't have an account? <a href="{% url 'signup' %}">Signup Now</a></p>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+    
+{% endblock content %}
+
+
