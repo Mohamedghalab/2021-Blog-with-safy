@@ -16,6 +16,7 @@
     padding-bottom: 0
 }
 
+
 small {
     font-size: calc(12px + (15 - 12) * ((100vw - 360px) / (1600 - 360))) !important
 }
@@ -38,4 +39,8 @@ h3 {
 
 .rights {
     font-size: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important
+}
+
+.blog{
+    background-color: orange;
 }

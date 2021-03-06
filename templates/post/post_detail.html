@@ -8,15 +8,15 @@
             <!-- posts -->
      
                 <div class="card mb-3">
-                    <div class="card-header bg-dark">
+                    <div class="card-header bg-warning">
                         <div class="row">
                             <div class="col-6">
                                 <!-- user -->
-                                <p class="text-muted">{{post.created_by}}</p>
+                                <p class="text-light">{{post.created_by}}</p>
                             </div>
                             <div class="col-6">
                                 <!-- created at -->
-                                <p class="text-muted text-end">{{post.created_at|timesince}}</p>
+                                <p class="text-light text-end">{{post.created_at|timesince}}</p>
                             </div>
                         </div>
                     </div>
@@ -54,18 +54,18 @@
     <!--show comments  -->
     Comments({{comment.count}})
     {% for comment in comment %}
-        <div class="card my-2 bg-secondary">
+        <div class="card my-2 bg-light">
             <div class="row mx-5">
                 <div class="col-6">
                     <!-- user -->
-                    <div class="text-light">
+                    <div class="text-muted">
                         Author : {{comment.created_by}}
                     </div>
 
                 </div>
                 <div class="col-6">
                     <!-- created_at -->
-                    <div class="text-light">
+                    <div class="text-muted text-end">
                         Since : {{comment.created_at|timesince}}
                     </div>
                 </div>

@@ -10,18 +10,18 @@
     <div class="row">
         <div class="col-8">
             <!-- posts -->
-           <a href="{% url 'new_post' %}" class="btn btn-primary my-2">Add Post</a>
+           <a href="{% url 'new_post' %}" class="btn btn-secondary my-2">Add Post</a>
             {% for post in posts %}
                 <div class="card mb-3">
-                    <div class="card-header bg-dark">
+                    <div class="card-header bg-warning">
                         <div class="row">
                             <div class="col-6">
                                 <!-- user -->
-                                <p class="text-muted">{{post.created_by}}</p>
+                                <p class=" text-light">{{post.created_by}}</p>
                             </div>
                             <div class="col-6">
                                 <!-- created at -->
-                                <p class="text-muted text-end">{{post.created_at|timesince}}</p>
+                                <p class=" text-end text-light">{{post.created_at|timesince}}</p>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                                 <!-- content -->
                                 <p>{{post.content}}</p>
                                 <div class="text-end">
-                                    <a href="{% url 'detail' post.id %}" class="btn btn-primary btn-sm ">Details</a>
+                                    <a href="{% url 'detail' post.id %}" class="btn btn-secondary btn-sm ">Details</a>
                                     
                                     {% comment %} <a href="{% url 'comment' post.id %}" class="btn btn-success btn-sm">Comment - {{post.comments_count}}</a> {% endcomment %}
                                     
@@ -61,11 +61,11 @@
             <!-- side bar -->
             <div class="card mt-5">
                 <div class="card-header">
-                    <h5>last post</h5>
+                    <h5 class="text-warning">last post</h5>
                 </div>
                 <div class="card-body">
                         {% if last_post %}
-                        <a href="{% url 'detail' last_post.id %}"><p>{{last_post}}</p></a>
+                        <a class="text-secondary" href="{% url 'detail' last_post.id %}"><p>{{last_post}}</p></a>
                         {% else %}
                         <p class="text-muted">no posts yet</p>
                         {% endif %}
