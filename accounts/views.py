@@ -20,12 +20,16 @@ def signup(request):
     data={'form':form}
     return render(request, 'accounts/signup.html', data)
 
-def password_change(request):
-    if request.method == "POST":
-        form = PasswordChangeForm(request.user, request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("password_change_done")
-    else:
-        form = PasswordChangeForm(request.user)
-    return render(request, 'registration/password_change.html', {'form':form})
+# def password_change(request):
+#     if request.method == "POST":
+#         form = PasswordChangeForm(request.user, request.POST)
+#         if form.is_valid():
+#             form.save()
+#             form.cleaned_data.get('username')
+#             form.cleaned_data.get('password1')
+#             user = authenticate(request, username=username, password=password)
+#             login(request, user)
+#             return redirect("password_change_done")
+#     else:
+#         form = PasswordChangeForm(request.user)
+#     return render(request, 'registration/password_change.html', {'form':form})

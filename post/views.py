@@ -29,7 +29,7 @@ def home(request):
     } 
     return render(request, 'post/home.html', data)
     
-@login_required(login_url="login")
+@login_required()
 def new_post(request):
     
     if request.method =="POST":
